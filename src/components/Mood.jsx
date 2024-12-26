@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { saveMood, getMoodHistory, dayLabel } from "@/utils/MoodUtils";
+import { saveMood, getMoodHistory, dayLabel, moodLabel } from "@/utils/MoodUtils";
 
 export function MoodInput({setMoodInput}) {
     const [mood, setMood] = useState(null);
@@ -22,13 +22,13 @@ export function MoodInput({setMoodInput}) {
             <div className="flex flex-col justify-center items-center space-y-4">
                 <h1>วันนี้คุณรู้สึกยังไง</h1>
                 <div className="flex flex-row space-x-3">
-                    {[1, 2, 3, 4, 5].map((value) => (
+                    {[0, 1, 2, 3, 4].map((value) => (
                         <button
                         key={value}
-                        className={`w-12 h-12 rounded-full ${mood === value ? 'bg-blue-500 text-white' : 'bg-gray-300'} text-lg`}
+                        className={`w-16 h-16 rounded-full ${mood === value ? 'bg-blue-500 text-white' : 'bg-gray-300'} text-base`}
                         onClick={() => handleMoodClick(value)}
                         >
-                        {value}
+                        {moodLabel[value]}
                         </button>
                     ))}
                 </div>
@@ -52,12 +52,11 @@ export function MoodOutput() {
                             className="flex flex-col justify-center items-center">
                             <button
                             className={`w-12 h-12 rounded-full bg-gray-300 text-lg`}
-                            onClick={() => handleMoodClick(value)}
                             >
-                            {mood}
+                            {moodLabel[mood]}
                             </button>
                             <p className="text-xs">
-                            {dayLabel()[index]}</p>
+                            {dayLabel[index]}</p>
                         </div>
                     ))}
                 </div>

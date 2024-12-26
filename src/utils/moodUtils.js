@@ -16,14 +16,30 @@ export const getMoodHistory = () => {
     return JSON.parse(localStorage.getItem("moodHistory")) || [];
 }
 
-export const dayLabel = () => {
-    return {
-        '0': 'today',
-        '1': 'yesterday',
-        '2': 'last 2 days',
-        '3': 'last 3 days',
-        '4': 'last 4 days',
-        '5': 'last 5 days',
-        '6': 'last 7 days'
-    }
+export const dayLabel = [
+    'today',
+    'yesterday',
+    'last 2 days',
+    'last 3 days',
+    'last 4 days',
+    'last 5 days',
+    'last 6 days'
+];
+
+export const moodLabel = {
+    '0': 'not good',
+    '1': 'ok',
+    '2': 'fine',
+    '3': 'good',
+    '4': 'happy'
 }
+
+export const getAvgMood = () => {
+    const moodHistory = getMoodHistory();
+    if (moodHistory.length === 0) return 'no mood recorded'; // Return a user-friendly string if history is empty.
+
+    const sum = moodHistory.reduce((acc, mood) => acc + Number(mood), 0);
+    const avgMoodIndex = Math.round(sum / moodHistory.length);
+
+    return moodLabel[avgMoodIndex]; // Access moodLabel like an object, not as a function.
+};
