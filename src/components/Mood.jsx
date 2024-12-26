@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { saveMood } from "@/utils/saveMood";
+import { saveMood, getMoodHistory, dayLabel } from "@/utils/MoodUtils";
 
 export function MoodInput({setMoodInput}) {
     const [mood, setMood] = useState(null);
@@ -21,7 +21,6 @@ export function MoodInput({setMoodInput}) {
         <>
             <div className="flex flex-col justify-center items-center space-y-4">
                 <h1>วันนี้คุณรู้สึกยังไง</h1>
-                {/* <input className="bg-white text-black"></input> */}
                 <div className="flex flex-row space-x-3">
                     {[1, 2, 3, 4, 5].map((value) => (
                         <button
@@ -40,10 +39,28 @@ export function MoodInput({setMoodInput}) {
 }
 
 export function MoodOutput() {
+    const moodHistory = getMoodHistory();
+    console.log(moodHistory);
+    
     return (
         <>
             <div>
-                <h1>okokoko</h1>
+            <div className="flex flex-row space-x-3">
+                    {moodHistory.map((mood,index) => (
+                        <div 
+                            key={index}
+                            className="flex flex-col justify-center items-center">
+                            <button
+                            className={`w-12 h-12 rounded-full bg-gray-300 text-lg`}
+                            onClick={() => handleMoodClick(value)}
+                            >
+                            {mood}
+                            </button>
+                            <p className="text-xs">
+                            {dayLabel()[index]}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </>
     )
