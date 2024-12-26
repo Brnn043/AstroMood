@@ -13,7 +13,10 @@ export const saveMood = (mood) => {
 }
 
 export const getMoodHistory = () => {
-    return JSON.parse(localStorage.getItem("moodHistory")) || [];
+    if (typeof window === "undefined") {
+        return [];
+    }
+    return JSON.parse(window.localStorage.getItem("moodHistory")) || [];
 }
 
 export const dayLabel = [
@@ -36,10 +39,10 @@ export const moodLabel = {
 
 export const getAvgMood = () => {
     const moodHistory = getMoodHistory();
-    if (moodHistory.length === 0) return 'no mood recorded'; // Return a user-friendly string if history is empty.
+    if (moodHistory.length === 0) return 'no mood recorded';
 
     const sum = moodHistory.reduce((acc, mood) => acc + Number(mood), 0);
     const avgMoodIndex = Math.round(sum / moodHistory.length);
 
-    return moodLabel[avgMoodIndex]; // Access moodLabel like an object, not as a function.
+    return moodLabel[avgMoodIndex];
 };

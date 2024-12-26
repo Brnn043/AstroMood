@@ -1,8 +1,13 @@
 'use client';
 import { getAvgMood } from "@/utils/MoodUtils";
+import { useState, useEffect } from "react";
 
 export const AvgMood = () => {
-    const AvgMood = getAvgMood()
+    const [averageMood, setAverageMood] = useState(null);
+    useEffect(() => {
+        const avg = getAvgMood();
+        setAverageMood(avg);
+    }, []);
     return (
         <>
             <div className="bg-slate-500 py-9 px-8 flex flex-row space-x-8 justify-center items-center rounded-3xl">
@@ -12,7 +17,7 @@ export const AvgMood = () => {
                 <div className="w-64 space-y-5">
                     <div className="flex flex-col justify-center items-center">
                         <h2>Mood ของคุณในช่วง 7 วันนี้ คือ</h2>
-                        <h1>{AvgMood}</h1>
+                        <h1>{averageMood}</h1>
                     </div>
                     <div className="break-words">
                         ในช่วงเวลานี้เปืดหอกดาหทททททททททททททททททททททททืหนฟรืนฟหืกรีฟืกืกฟรื
