@@ -6,7 +6,8 @@ export default function Nova() {
     const [moodInput, setMoodInput] = useState(false);
     return (
         <>
-            {moodInput?<MoodOutput />:<MoodInput setMoodInput={setMoodInput}/>}
+        {moodInput && <button className="fixed top-14 left-5" onClick={() => setMoodInput(false)}>new day</button>}
+        {moodInput? <MoodOutput setMoodInput={setMoodInput} />:<MoodInput setMoodInput={setMoodInput}/>}
         </>
     )
 }

@@ -45,7 +45,7 @@ export function MoodOutput() {
     return (
         <>
             <div>
-            <div className="flex flex-row space-x-3">
+                <div className="flex flex-row space-x-3">
                     {moodHistory.map((mood,index) => (
                         <div 
                             key={index}
