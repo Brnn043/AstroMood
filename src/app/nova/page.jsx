@@ -18,9 +18,9 @@ export default function Nova() {
             transition={{ duration: 1.5 }}
         >
             <div className="relative h-full w-full">
-                <div className="absolute inset-0 opacity-10 animate-customPulse">
+                {/* <div className="absolute inset-0 opacity-10 animate-customPulse">
                     <Image src="/galaxy.png" alt="galaxy" layout="fill" objectFit="fill" />
-                </div>
+                </div> */}
                 
                 {/* <div className="absolute inset-0 translate-y-[2%] h-[95%] w-[95%] animate-smoothFloat">
                     <Image src="/character.png" alt="character" layout="fill" objectFit="scale-down" />
