@@ -113,8 +113,8 @@ export const MoodChart = () => {
     };
 
     return (
-        <div className="w-full max-w-lg mx-auto p-4 bg-[#2a2a59] bg-opacity-75 border-2 border-white border-opacity-25 rounded-3xl shadow-md">
-            <h2 className="text-center mb-4 text-white">Mood Chart for the Last 7 Days</h2>
+        <div className="bg-[#2a2a59] bg-opacity-75 border-2 border-white border-opacity-25 rounded-3xl shadow-md p-4 md:w-full w-4/5">
+            <h2 className="text-center mb-4 text-white font-semibold">Mood Chart for the Last 7 Days</h2>
             <Line data={chartData} options={options} />
         </div>
     );

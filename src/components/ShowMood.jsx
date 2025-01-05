@@ -13,8 +13,8 @@ export const AvgMood = () => {
 
     return (
         <>
-            <div className="bg-[#2a2a59] bg-opacity-75 border-2 border-white border-opacity-25 py-9 px-8 flex flex-row space-x-8 justify-center items-center rounded-3xl">
-                <div>
+            <div className="bg-[#2a2a59] bg-opacity-75 border-2 border-white border-opacity-25 py-9 px-8 flex flex-row space-x-8 rounded-3xl md:w-full w-4/5">
+                <div className="flex justify-center items-center">
                     <Image src={getImageMood(averageMood)} width={120} height={120} alt={`Mood icon of ${averageMood}`} />
                 </div>
                 <div className="w-64 space-y-5">

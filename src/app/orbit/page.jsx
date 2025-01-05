@@ -8,7 +8,7 @@ export default function Orbit() {
     return (
         <>
             <Suspense fallback={<LoadingScreen />}>
-                <div className="flex flex-col space-y-4">
+                <div className="flex flex-col space-y-4 justify-center items-center">
                     <AvgMood />
                     <MoodChart />
                 </div>
