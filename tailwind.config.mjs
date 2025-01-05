@@ -10,6 +10,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        blacklavender: "#191920"
       },
       animation: {
         float: 'float 2s ease-in-out infinite',

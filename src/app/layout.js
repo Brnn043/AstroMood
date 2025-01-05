@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen min-w-full flex flex-col`}
       >
-        {/* <Header /> */}
+        <Header />
         <div className="absolute inset-0 z-0"><Image src="/bg.png" alt="bg" layout="fill" objectFit="cover" /></div>
         <div className="absolute inset-0 z-1 bg-black/30"></div>
         <div className="absolute inset-0 opacity-10 animate-customPulse">
