@@ -48,26 +48,30 @@ export function MoodInput({ setMoodInput }) {
 
     function renderMoodOption(value, src, alt, mood, handleMoodClick) {
         return (
-            <div
-                onClick={() => handleMoodClick(value)}
-                className="relative cursor-pointer"
-            >
+        <>
+            <div className="flex flex-col justify-center items-center">
                 <div
-                    className={`absolute inset-0 transition-all ${
-                        mood === value
-                            ? "scale-120 opacity-65 bg-white rounded-full blur-lg"
-                            : "opacity-0"
-                    }`}
-                ></div>
-                <Image
-                    src={src}
-                    width={70}
-                    height={70}
-                    alt={alt}
-                    className="relative z-10 rounded-full"
-                />
+                        onClick={() => handleMoodClick(value)}
+                        className="relative cursor-pointer"
+                    >
+                        <div
+                            className={`absolute inset-0 transition-all ${
+                                mood === value
+                                    ? "scale-120 opacity-65 bg-white rounded-full blur-lg"
+                                    : "opacity-0"
+                            }`}
+                        ></div>
+                        <Image
+                            src={src}
+                            width={70}
+                            height={70}
+                            alt={alt}
+                            className="relative z-10 rounded-full"
+                        />
+                    </div>
+                <div className="text-slate-300 text-base">{alt}</div>
             </div>
-        );
+        </>);
     }
 }
 
