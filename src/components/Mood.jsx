@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { saveMood, getMoodHistory, dayLabel, moodLabel } from "@/utils/MoodUtils";
+import { saveMood, getMoodHistory, dayLabel, moodLabel, getImageMood } from "@/utils/MoodUtils";
 import Image from "next/image";
 
 export function MoodInput({ setMoodInput }) {
@@ -79,26 +79,60 @@ export function MoodInput({ setMoodInput }) {
 export function MoodOutput() {
     const moodHistory = getMoodHistory();
     console.log(moodHistory);
-    
+
+    // Helper to group items into specified rows
+    const groupIntoRows = (items, pattern) => {
+        let result = [];
+        let index = 0;
+        for (const count of pattern) {
+            result.push(items.slice(index, index + count));
+            index += count;
+        }
+        return result;
+    };
+
+    // Define patterns for alignment
+    const rowPatterns = {
+        7: [2, 3, 2],
+        6: [2, 3, 1],
+        5: [2, 3],
+        4: [1, 2,1],
+        3: [1,2],
+        2: [2],
+        1: [1],
+    };
+
+    // Get the appropriate pattern or default to a single row
+    const pattern = rowPatterns[moodHistory.length] || [moodHistory.length];
+    const groupedMoods = groupIntoRows(moodHistory, pattern);
+
     return (
-        <>
-            <div>
-                <div className="flex flex-row space-x-3">
-                    {moodHistory.map((mood,index) => (
-                        <div 
+        <div className="space-y-3 w-[50%] md:w-[100%] translate-x-10">
+            {groupedMoods.map((row, rowIndex) => (
+                <div 
+                    key={rowIndex} 
+                    className="flex justify-center space-x-2 md:space-x-20"
+                >
+                    {row.map((mood, index) => (
+                        <div
                             key={index}
-                            className="flex flex-col justify-center items-center">
-                            <button
-                            className={`w-12 h-12 rounded-full bg-gray-300 text-lg`}
-                            >
-                            {moodLabel[mood]}
-                            </button>
-                            <p className="text-xs">
-                            {dayLabel[index]}</p>
+                            className="flex flex-col justify-center items-center "
+                        >
+                            <Image
+                                src={getImageMood(moodLabel[mood])}
+                                width={70}
+                                height={70}
+                                alt={moodLabel[mood]}
+                                className="relative z-10 rounded-full"
+                            />
+                            <p className="text-xs text-center">{moodLabel[mood]}</p>
+                            <p className="text-xs text-slate-300 text-center">
+                                {dayLabel[index]}
+                            </p>
                         </div>
                     ))}
                 </div>
-            </div>
-        </>
-    )
+            ))}
+        </div>
+    );
 }
