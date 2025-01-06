@@ -18,7 +18,8 @@ export function MoodInput({ setMoodInput }) {
 
     return (
         <div className="flex flex-col justify-center items-center space-y-6">
-            <h1 className="md:text-xl font-normal text-base">วันนี้คุณรู้สึกยังไง</h1>
+            {/* <h1 className="md:text-xl font-normal text-base">วันนี้คุณรู้สึกยังไง</h1> */}
+            <h1 className="md:text-xl font-normal text-base">How are you feeling today?</h1>
             <div className="flex flex-col space-y-4 justify-center items-center">
                 <div className="flex md:space-x-12 space-x-0">
                     {renderMoodOption(4, "/star/amazing.png", "Amazing", mood, handleMoodClick)}
