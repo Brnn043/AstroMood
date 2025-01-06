@@ -13,7 +13,7 @@ export default function Nova() {
         <Suspense fallback={<LoadingScreen />}>
             {/* Group Galaxy, Character, and Star */}
             <motion.div
-                className="absolute inset-0 z-2 flex justify-center items-center translate-x-[-2%] translate-y-[5%]"
+                className="absolute inset-0 z-2 flex justify-center items-center md:translate-x-[-2%] translate-x-[-10%] translate-y-[5%]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5 }}
@@ -33,18 +33,13 @@ export default function Nova() {
                         }}
                     >
                             <Image src="/character.png" alt="character" layout="fill" objectFit="scale-down" />
-                        {/* <div className="absolute flex flex-col inset-0 translate-x-[10%] translate-y-[10%] h-[90%] w-[90%] ">
-                            <Image src="/star.png" alt="star" layout="fill" objectFit="scale-down" />
-                        </div> */}
-                    
                     </motion.div>
                 </div>
             </motion.div>
 
 
             <div className="absolute flex justify-center items-center z-30 inset-0">
-                {moodInput && <button className="fixed top-14 left-5" onClick={() => setMoodInput(false)}>new day</button>}
-                <div className="absolute translate-x-[30%] translate-y-[-10%]">
+                <div className="absolute md:translate-x-[30%] translate-x-[10%] translate-y-[-10%]">
                     {moodInput? <MoodOutput setMoodInput={setMoodInput} />:<MoodInput setMoodInput={setMoodInput}/>}
                 </div>
             </div>
