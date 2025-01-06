@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/header";
+import Header from "@/components/Header";
 import "./globals.css";
 import Image from "next/image";
 import './mouse.js'
